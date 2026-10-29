@@ -1,0 +1,75 @@
+---
+// Contacto: banda hueso con grano y borde dentado, de borde a borde. Titular a todo el ancho y debajo tres columnas
+// (una en móvil): teléfono enorme con WhatsApp, email y dirección (enlace al mapa); el horario como una tablilla
+// (`horario: [{dia, horas}]` de la sección; si no hay, site.yaml → contacto.horario); y un formulario corto
+// (nombre, teléfono, email, servicio y mensaje) que abre el correo. `boton_formulario` opcional.
+import { seccion, site, tel, whatsapp, mapa, campo } from '../../data/site';
+import Titular from '../ui/Titular.astro';
+import Icono from '../ui/Icono.astro';
+import FormularioContacto from '../ui/FormularioContacto.astro';
+interface Props { id: string }
+const { id } = Astro.props;
+const s = seccion(id);
+const c = site.contacto;
+const horario = s ? s.horario.filter((h) => h && h.dia) : [];
+const botonForm = campo(s?.boton_formulario) || undefined;
+---
+
+{
+  s && (
+    <section id={id} class="seccion banda-hueso grano dentado">
+      <div class="contenedor">
+        <Titular antetitulo={s.antetitulo} titulo={s.titulo} texto={s.texto} />
+        <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,.9fr)_minmax(0,1.2fr)] lg:gap-14">
+          <div class="min-w-0">
+            {c.telefono && <a class="contacto-telefono" href={tel(c.telefono)}>{c.telefono}</a>}
+            <ul class="mt-6 grid gap-1">
+              {c.whatsapp && (
+                <li><a class="contacto-dato" href={whatsapp(c.whatsapp)} rel="noopener" target="_blank"><Icono nombre="whatsapp" class="resalte shrink-0" />WhatsApp {c.whatsapp}</a></li>
+              )}
+              {c.email && (
+                <li><a class="contacto-dato break-all" href={`mailto:${c.email}`}><Icono nombre="correo" class="resalte shrink-0" />{c.email}</a></li>
+              )}
+              {c.direccion && (
+                <li><a class="contacto-dato" href={mapa(c.direccion)} rel="noopener" target="_blank"><Icono nombre="mapa" class="resalte shrink-0" />{c.direccion}</a></li>
+              )}
+            </ul>
+          </div>
+          {(horario.length > 0 || c.horario) && (
+            <div class="contacto-horario">
+              <p class="etiqueta-mayus resalte flex items-center gap-2"><Icono nombre="reloj" tam={18} />Horario</p>
+              {horario.length > 0 ? (
+                <ul class="mt-4">
+                  {horario.map((h) => (
+                    <li class="horario-fila">
+                      <span class="horario-dia">{h.dia}</span>
+                      <span class="horario-horas">{h.horas}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p class="mt-4 text-lg">{c.horario}</p>
+              )}
+            </div>
+          )}
+          <div class="contacto-form">
+            <FormularioContacto prefijo={`${id}-f`} boton={botonForm} />
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .contacto-telefono { display: inline-block; font-family: var(--fuente-titulos); font-weight: 800; font-synthesis-weight: none; font-size: clamp(2.4rem, 10vw, 3.75rem); line-height: 1; letter-spacing: -0.02em; text-decoration: none; color: var(--resalte); white-space: nowrap; }
+  .contacto-dato { display: flex; align-items: center; gap: .8rem; min-height: 2.75rem; text-decoration: none; font-size: 1.05rem; }
+  a.contacto-dato:hover { text-decoration: underline; }
+  .contacto-horario { align-self: start; padding: 1.5rem 1.25rem; border: 3px double currentColor; }
+  .horario-fila { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem 1rem; padding-block: .8rem; border-bottom: 1px dashed color-mix(in srgb, currentColor 35%, transparent); }
+  .horario-fila:last-child { border-bottom: 0; }
+  .horario-dia { font-family: var(--fuente-titulos); font-weight: 800; font-synthesis-weight: none; font-size: 1.15rem; }
+  .horario-horas { opacity: .85; }
+  .contacto-form { padding: 1.5rem 1.25rem; background: var(--c-fondo); color: var(--c-texto); border-top: 6px solid var(--c-acento); }
+  @media (min-width: 768px) { .contacto-form { padding: 2rem; } }
+</style>

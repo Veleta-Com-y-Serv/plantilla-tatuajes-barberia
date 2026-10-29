@@ -1,0 +1,66 @@
+---
+// Artistas: banda negra con el titular dentro del ancho máximo y, debajo, los retratos de borde a borde sin
+// márgenes (2 columnas en móvil, hasta 4 en escritorio). Cada uno: foto 3:4 en blanco y negro contrastado (se
+// colorea al pasar), nombre en slab serif sobre la foto, `cargo` en rojo y `estilos` (cadena con comas o «;»)
+// como etiquetas; `texto` debajo. Sin fotos de caras generadas: por defecto, /placeholders/persona.svg.
+// `personas: [{nombre, cargo, estilos, foto, texto}]`. Sin personas, solo el titular.
+import { seccion, etiquetas } from '../../data/site';
+import Imagen from '../ui/Imagen.astro';
+import Titular from '../ui/Titular.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const personas = s ? s.personas.filter((p) => p && p.nombre) : [];
+const columnas = Math.min(Math.max(personas.length, 1), 4);
+---
+
+{
+  s && (
+    <section id={Astro.props.id} class="artistas banda-tinta grano">
+      <div class="contenedor seccion !pb-12 md:!pb-16">
+        <div class="grid gap-6 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:items-end lg:gap-16">
+          <Titular antetitulo={s.antetitulo} titulo={s.titulo} class="!mb-0" />
+          {s.texto && <p class="titular-texto lg:!mt-0">{s.texto}</p>}
+        </div>
+      </div>
+      {personas.length > 0 && (
+        <ul class="artistas-rejilla" style={`--cols:${columnas}`}>
+          {personas.map((p) => (
+            <li class="artista">
+              <div class="artista-foto">
+                <Imagen src={p.foto || '/placeholders/persona.svg'} alt={p.nombre} ancho={600} alto={800} class="aspect-[3/4] h-full w-full object-cover" />
+                <div class="artista-placa">
+                  {p.cargo && <p class="etiqueta-mayus resalte">{p.cargo}</p>}
+                  <h3 class="artista-nombre">{p.nombre}</h3>
+                </div>
+              </div>
+              {(etiquetas(p.estilos).length > 0 || p.texto) && (
+                <div class="artista-cuerpo">
+                  {etiquetas(p.estilos).length > 0 && (
+                    <ul class="flex flex-wrap gap-1.5">
+                      {etiquetas(p.estilos).map((e) => <li class="artista-estilo">{e}</li>)}
+                    </ul>
+                  )}
+                  {p.texto && <p class="mt-3 text-[.95rem] opacity-80">{p.texto}</p>}
+                </div>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  )
+}
+
+<style>
+  .artistas-rejilla { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--linea); }
+  @media (min-width: 900px) { .artistas-rejilla { grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); } }
+  .artista { min-width: 0; border-right: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
+  .artista-foto { position: relative; overflow: hidden; background: var(--negro); }
+  .artista-foto :global(img) { filter: grayscale(1) contrast(1.15); transition: filter .4s ease, transform .6s ease; }
+  .artista:hover .artista-foto :global(img) { filter: grayscale(0) contrast(1.05); transform: scale(1.03); }
+  .artista-placa { position: absolute; left: 0; right: 0; bottom: 0; padding: 3rem 1rem 1rem; background: linear-gradient(0deg, color-mix(in srgb, var(--c-fondo) 92%, transparent) 10%, transparent); color: var(--c-texto); }
+  .artista-nombre { margin-top: .35rem; font-size: clamp(1.35rem, 4.6vw, 2.25rem); line-height: 1; overflow-wrap: break-word; }
+  .artista-cuerpo { padding: 1rem 1rem 1.5rem; }
+  @media (min-width: 768px) { .artista-placa { padding: 4rem 1.5rem 1.25rem; } .artista-cuerpo { padding: 1.25rem 1.5rem 2rem; } }
+  .artista-estilo { padding: .2rem .55rem; font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; border: 1px solid color-mix(in srgb, var(--rojo-claro) 70%, transparent); }
+</style>

@@ -1,0 +1,17 @@
+---
+// Página de error con el diseño de la plantilla: banda negra con grano, «404» enorme en slab serif y cinta roja dentada.
+import Base from '../layouts/Base.astro';
+---
+
+<Base titulo="Página no encontrada">
+  <section class="banda-tinta grano flex min-h-[70svh] flex-col">
+    <div class="contenedor flex flex-1 flex-col justify-center py-16">
+      <p class="antetitulo">Error 404</p>
+      <p class="mt-4 font-display text-[clamp(7rem,34vw,18rem)] leading-[.8] font-extrabold tracking-tight [font-synthesis-weight:none] resalte" aria-hidden="true">404</p>
+      <h1 class="titulo-seccion mt-8">Esta página no existe</h1>
+      <p class="mt-4 max-w-xl text-lg opacity-80">Puede que el enlace esté mal o que la página se haya movido.</p>
+      <p class="mt-9"><a class="btn" href="/">Volver al inicio</a></p>
+    </div>
+  </section>
+  <div class="banda-roja dentado py-5 text-center etiqueta-mayus" aria-hidden="true">✶ ✶ ✶</div>
+</Base>

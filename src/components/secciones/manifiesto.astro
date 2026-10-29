@@ -1,0 +1,43 @@
+---
+// La casa: banda hueso con grano y borde dentado; la frase de la casa (`declaracion`) enorme en slab serif con
+// unas comillas rojas gigantes y la firma (`autor`) en mayúsculas espaciadas. `antetitulo` y `titulo` van encima
+// en pequeño. Sin `declaracion`, se pinta el `titulo` en grande con el `texto` (párrafos). Sin nada, no se pinta.
+import { seccion, campo, parrafos } from '../../data/site';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const frase = campo(s?.declaracion);
+const autor = campo(s?.autor);
+const hayAlgo = s && (frase || s.titulo || s.texto);
+---
+
+{
+  s && hayAlgo && (
+    <section id={Astro.props.id} class="manifiesto seccion banda-hueso grano dentado">
+      <div class="contenedor">
+        <div class="manifiesto-cabeza">
+          {s.antetitulo && <p class="antetitulo">{s.antetitulo}</p>}
+          {s.titulo && (frase ? <h2 class="manifiesto-titulo">{s.titulo}</h2> : <h2 class="titulo-seccion">{s.titulo}</h2>)}
+        </div>
+        {frase ? (
+          <figure class="manifiesto-cita">
+            <span class="manifiesto-comillas" aria-hidden="true">“</span>
+            <blockquote><p>{frase}</p></blockquote>
+            {autor && <figcaption class="etiqueta-mayus"><span class="estrella mr-3" aria-hidden="true">✶</span>{autor}</figcaption>}
+          </figure>
+        ) : (
+          <div class="mt-6 max-w-3xl space-y-4 text-lg opacity-85">{parrafos(s.texto).map((p) => <p>{p}</p>)}</div>
+        )}
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .manifiesto-cabeza { display: flex; flex-direction: column; gap: .6rem; }
+  .manifiesto-titulo { font-family: var(--fuente-texto); font-size: 1rem; font-weight: 600; letter-spacing: 0; opacity: .75; }
+  .manifiesto-cita { position: relative; margin-top: 2.5rem; padding-top: 4.5rem; max-width: 72rem; }
+  .manifiesto-comillas { position: absolute; top: -1.75rem; left: -.25rem; font-family: var(--fuente-titulos); font-weight: 800; font-synthesis-weight: none; font-size: clamp(7rem, 18vw, 10rem); line-height: 1; color: var(--resalte); }
+  .manifiesto-cita blockquote { position: relative; font-family: var(--fuente-titulos); font-weight: 800; font-synthesis-weight: none; font-size: clamp(1.85rem, 4.6vw, 4.25rem); line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance; }
+  .manifiesto-cita figcaption { margin-top: 2.25rem; display: flex; align-items: center; }
+  @media (min-width: 1024px) { .manifiesto-cita { padding-top: 0; padding-left: 10rem; margin-top: 3.5rem; } .manifiesto-comillas { top: -1.75rem; left: 0; font-size: 12rem; } }
+</style>

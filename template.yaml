@@ -1,0 +1,89 @@
+# Metadatos de la plantilla para el catálogo de NoExpertise.
+id: tatuajes-barberia
+nombre: Tatuajes y barbería
+descripcion: "Web cruda en negro, rojo oscuro y hueso para estudios de tatuaje, barberías y piercing."
+sectores:
+  - { id: tatuajes, nombre: Tatuajes }
+  - { id: barberia, nombre: Barbería }
+  - { id: piercing, nombre: Piercing }
+  - { id: estudio-tatuaje, nombre: Estudio de tatuaje }
+secciones:
+  - { id: hero, nombre: Portada }
+  - { id: servicios, nombre: Servicios y precios }
+  - { id: artistas, nombre: Artistas }
+  - { id: proceso, nombre: Cómo trabajamos }
+  - { id: galeria, nombre: Trabajos }
+  - { id: manifiesto, nombre: La casa }
+  - { id: preguntas, nombre: Cuidados y preguntas }
+  - { id: cita, nombre: Pide cita }
+  - { id: contacto, nombre: Contacto }
+estilo: crudo
+plan_minimo: gratis
+version: 1.0.0
+base: astrowind
+demo_url: https://demo-plantilla-tatuajes-barberia.noexpertise.com
+activa: true
+orden: 440
+
+# Asistente de puesta en marcha (NoExpertise): un paso por pantalla. Rutas del site sin índices;
+# tipos: texto y lista (la IA propone), datos, fotos, eleccion (colores y logo) y repaso.
+asistente:
+  - id: negocio
+    titulo: "Tu estudio"
+    pregunta: "¿Cómo se llama tu estudio o barbería y qué hacéis? Tatuaje, barbería, piercing… y en qué estilo."
+    ayuda: "Con dos frases basta: lo afinamos juntos en los pasos siguientes."
+    tipo: texto
+    campos: [nombre, eslogan, seo.titulo, seo.descripcion, secciones.hero.antetitulo, secciones.hero.titulo, secciones.hero.texto, secciones.hero.items]
+  - id: contacto
+    titulo: "Cómo te encuentran"
+    pregunta: "¿Dónde está el estudio y cómo os pueden llamar o escribir? Dime también el horario."
+    ayuda: "Solo lo que quieras que vean tus clientes. Lo que dejes vacío no sale en tu web."
+    tipo: datos
+    campos: [contacto.telefono, contacto.whatsapp, contacto.email, contacto.direccion, contacto.horario, redes.instagram, redes.facebook]
+  - id: servicios
+    titulo: "Servicios y precios"
+    pregunta: "¿Qué servicios ofrecéis? Uno por línea, con el precio y la duración si quieres (tatuaje pequeño, degradado, piercing de oreja…)."
+    ayuda: "Si no quieres poner precios, déjalos en blanco: no salen."
+    tipo: lista
+    campos: [secciones.servicios.servicios]
+  - id: artistas
+    titulo: "El equipo"
+    pregunta: "¿Quién tatúa, corta o anilla? Nombre, qué hace y sus estilos, uno por línea."
+    ayuda: "Las fotos las pones luego en Contenido."
+    tipo: lista
+    campos: [secciones.artistas.personas]
+  - id: proceso
+    titulo: "Cómo trabajáis"
+    pregunta: "¿Cómo es una cita con vosotros, de la primera consulta a los cuidados?"
+    tipo: texto
+    campos: [secciones.proceso.titulo, secciones.proceso.texto, secciones.proceso.items]
+  - id: manifiesto
+    titulo: "La casa"
+    pregunta: "¿Qué os hace distintos? Cuéntalo como se lo dirías a un cliente en la silla."
+    tipo: texto
+    campos: [secciones.manifiesto.titulo, secciones.manifiesto.declaracion, secciones.manifiesto.autor]
+  - id: preguntas
+    titulo: "Cuidados y preguntas"
+    pregunta: "¿Qué os preguntan siempre? Cuidados del tatuaje, dolor, señal, edad mínima… Escribe la pregunta y lo que respondéis."
+    ayuda: "Si lo prefieres, añádelas luego en Contenido."
+    tipo: lista
+    campos: [secciones.preguntas.preguntas]
+  - id: cita
+    titulo: "Pedir cita"
+    pregunta: "¿Cómo pedís que os cuenten una idea? Qué tienen que traer, si pedís señal y en cuánto respondéis."
+    tipo: texto
+    campos: [secciones.cita.titulo, secciones.cita.texto, secciones.cita.items, secciones.cita.nota]
+  - id: fotos
+    titulo: "Tus fotos"
+    pregunta: "Pon una foto de portada del estudio y tus mejores trabajos."
+    ayuda: "Sube las tuyas o elige una del banco. Las que no cambies se quedan como están."
+    tipo: fotos
+    campos: [secciones.hero.imagen, secciones.servicios.imagen, secciones.galeria.galeria, secciones.preguntas.imagen]
+  - id: aspecto
+    titulo: "Colores y logo"
+    pregunta: "Elige los colores de tu web y, si tienes, tu logo."
+    tipo: eleccion
+    campos: [colores.primario, colores.acento, logo]
+  - id: repaso
+    titulo: "Repaso"
+    tipo: repaso

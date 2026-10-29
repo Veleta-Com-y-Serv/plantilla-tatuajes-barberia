@@ -1,0 +1,156 @@
+# Contenido de la web. Es lo único que rellena la plataforma NoExpertise.
+# Una sola página: el menú apunta a anclas (#id-de-sección).
+# Las secciones se muestran en el orden de este fichero. Para ocultar una: activa: false.
+# Apartado nuevo: un id propio (es su ancla, /#id) con `tipo:` = el diseño de otra sección o `texto`.
+# Listas planas: nunca una lista dentro de un elemento de lista. Precios siempre entre comillas.
+nombre: Berbés Tinta y Navaja
+eslogan: Estudio de tatuaje, barbería y piercing en el Casco Vello de Vigo.
+sector: tatuajes
+logo: ""          # ruta a una imagen en public/ (p. ej. /logo.svg). Vacío = inicial en sello + nombre en texto.
+colores:
+  primario: "#7a1712"   # rojo oscuro: bandas de color (cinta de la portada, proceso, cita)
+  acento: "#c8361f"     # rojo vivo: botones, rayas de los antetítulos, estrellas
+  fondo: "#0f0d0c"      # negro tinta: tema oscuro por defecto (con fondo claro el diseño también funciona)
+  texto: "#ece3d2"      # hueso: letra sobre negro y fondo de las bandas claras
+contacto:
+  telefono: "986 21 47 09"
+  email: hola@berbestinta.es
+  direccion: Rúa Real 14, 36202 Vigo (Pontevedra)
+  horario: "Martes a viernes, de 10:00 a 14:00 y de 16:00 a 20:30. Sábados, de 10:00 a 15:00."
+  whatsapp: "+34 644 18 32 75"
+redes:
+  instagram: https://www.instagram.com/
+  facebook: ""
+  linkedin: ""
+menu:
+  - { texto: Servicios, url: "/#servicios" }
+  - { texto: Artistas, url: "/#artistas" }
+  - { texto: Trabajos, url: "/#galeria" }
+  - { texto: Cuidados, url: "/#preguntas" }
+  - { texto: Contacto, url: "/#contacto" }
+boton_cabecera: { texto: Pide cita, url: "/#cita" }
+seo:
+  titulo: Berbés Tinta y Navaja · Tatuajes y barbería en Vigo
+  descripcion: "Tatuajes de autor, barbería clásica con navaja y piercing en el Casco Vello de Vigo. Diseño propio, material de un solo uso y cita por WhatsApp."
+  tipo: TattooParlor
+marca_pie: true
+
+secciones:
+  hero:
+    activa: true
+    antetitulo: Tatuaje y barbería en Vigo
+    titulo: Tinta fina y navaja caliente
+    texto: "Tatuajes de autor, barbería clásica y piercing en el Casco Vello. Diseños propios, material de un solo uso y un equipo que se toma su tiempo."
+    imagen: /fotos/hero.jpg
+    cta: { texto: Pide cita, url: "/#cita" }
+    cta_secundario: { texto: Ver trabajos, url: "/#galeria" }
+    items:
+      - { titulo: Diseño propio para cada pieza, icono: lapiz }
+      - { titulo: Material de un solo uso, icono: escudo }
+      - { titulo: Barbería de martes a sábado, icono: navaja }
+
+  servicios:
+    activa: true
+    antetitulo: Servicios y precios
+    titulo: La lista de la casa
+    texto: "Precios orientativos: cada tatuaje se presupuesta al ver la idea, la zona y el tamaño."
+    imagen: /fotos/barberia.jpg
+    nota: "Precios con IVA incluido. Para reservar fecha de tatuaje pedimos una señal que se descuenta del total."
+    cta: { texto: Pide presupuesto, url: "/#cita" }
+    servicios:
+      - { nombre: Tatuaje pequeño, texto: "Hasta 5 cm: letras, símbolos o línea fina.", precio: "desde 60 €", duracion: 1 h, categoria: Tatuaje, destacado: false }
+      - { nombre: Tatuaje mediano, texto: "Antebrazo, gemelo u hombro, con diseño propio incluido.", precio: "desde 150 €", duracion: 2-3 h, categoria: Tatuaje, destacado: false }
+      - { nombre: Sesión de día completo, texto: "Para piezas grandes por sesiones: manga, espalda o pierna.", precio: "450 €", duracion: 6 h, categoria: Tatuaje, destacado: true }
+      - { nombre: Cover up, texto: "Tapamos o renovamos un tatuaje antiguo. Antes lo vemos en persona.", precio: "desde 120 €", duracion: "", categoria: Tatuaje, destacado: false }
+      - { nombre: Retoque, texto: "Gratis el primer mes en los trabajos del estudio.", precio: "Consultar", duracion: 30 min, categoria: Tatuaje, destacado: false }
+      - { nombre: Corte de pelo, texto: "Tijera o máquina, lavado y peinado.", precio: "16 €", duracion: 30 min, categoria: Barbería, destacado: false }
+      - { nombre: Degradado, texto: "Skin fade o low fade con el acabado a navaja.", precio: "18 €", duracion: 40 min, categoria: Barbería, destacado: true }
+      - { nombre: Arreglo de barba, texto: "Perfilado a navaja, toalla caliente y aceite.", precio: "12 €", duracion: 20 min, categoria: Barbería, destacado: false }
+      - { nombre: Afeitado clásico, texto: "Toalla caliente, brocha y navaja, sin prisas.", precio: "20 €", duracion: 40 min, categoria: Barbería, destacado: false }
+      - { nombre: Corte y barba, texto: "El combo de los sábados por la mañana.", precio: "26 €", duracion: 1 h, categoria: Barbería, destacado: false }
+      - { nombre: Piercing de oreja, texto: "Lóbulo, hélix o tragus con joya de titanio.", precio: "desde 30 €", duracion: 20 min, categoria: Piercing, destacado: false }
+      - { nombre: Piercing de nariz, texto: "Aleta o septum con joya de titanio.", precio: "desde 35 €", duracion: 20 min, categoria: Piercing, destacado: false }
+      - { nombre: Cambio de joya, texto: "Te la ponemos y te enseñamos a limpiarla.", precio: "8 €", duracion: 10 min, categoria: Piercing, destacado: false }
+
+  artistas:
+    activa: true
+    antetitulo: El equipo
+    titulo: Cuatro manos, cuatro estilos
+    texto: "Cada uno firma lo suyo. Mira sus estilos y pide cita con quien encaje con tu idea."
+    personas:
+      - { nombre: Antía Lago, cargo: Tatuadora, estilos: "Blackwork, línea fina, botánico", foto: /placeholders/persona.svg, texto: "Dibuja cada pieza a mano antes de pasarla a la piel." }
+      - { nombre: Xoán Pereira, cargo: Tatuador, estilos: "Tradicional, neotradicional, color", foto: /placeholders/persona.svg, texto: "Líneas gordas, colores sólidos y motivos marineros de toda la vida." }
+      - { nombre: Breixo Rial, cargo: Barbero, estilos: "Degradados, afeitado clásico, barba", foto: /placeholders/persona.svg, texto: "Navaja, toalla caliente y conversación. Lleva la barbería desde el primer día." }
+      - { nombre: Noa Figueroa, cargo: Piercer, estilos: "Oreja, nariz, joyería de titanio", foto: /placeholders/persona.svg, texto: "Formada en higiene y anillado. Te explica cada paso antes de empezar." }
+
+  proceso:
+    activa: true
+    antetitulo: Cómo trabajamos
+    titulo: De la idea a la piel
+    texto: "Cuatro pasos y ninguna sorpresa."
+    items:
+      - { titulo: Cita, texto: "Escríbenos con la idea, la zona y el tamaño. Te respondemos con presupuesto y fecha.", icono: mensaje }
+      - { titulo: Diseño, texto: "Lo dibujamos para ti y lo ajustamos en el estudio hasta que te guste.", icono: lapiz }
+      - { titulo: Sesión, texto: "Cabina cerrada, material de un solo uso y las pausas que necesites.", icono: maquina }
+      - { titulo: Cuidados, texto: "Te llevas por escrito cómo curarlo y el primer retoque va de nuestra cuenta.", icono: gota }
+
+  galeria:
+    activa: true
+    antetitulo: Trabajos
+    titulo: Recién salidos del estudio
+    texto: "Una muestra de lo último que hemos tatuado, cortado y anillado."
+    cta: { texto: Más trabajos en Instagram, url: "https://www.instagram.com/" }
+    galeria:
+      - /fotos/trabajo-antebrazo.jpg
+      - /fotos/trabajo-maquina.jpg
+      - /fotos/trabajo-flash.jpg
+      - /fotos/trabajo-navaja.jpg
+      - /fotos/trabajo-degradado.jpg
+      - /fotos/trabajo-piercing.jpg
+      - /fotos/trabajo-tintas.jpg
+      - /fotos/trabajo-estudio.jpg
+
+  manifiesto:
+    activa: true
+    antetitulo: La casa
+    titulo: Por qué abrimos este estudio
+    declaracion: "Aquí no hay catálogo en la pared ni prisas en la silla. Cada pieza se dibuja para una sola piel y cada corte se termina a navaja."
+    autor: Antía Lago, fundadora del estudio
+
+  preguntas:
+    activa: true
+    antetitulo: Cuidados y dudas
+    titulo: Lo que nos preguntáis antes y después
+    texto: "Si tu duda no está aquí, escríbenos por WhatsApp."
+    imagen: /fotos/cuidados.jpg
+    preguntas:
+      - { pregunta: "¿Cuánto tarda en curar un tatuaje?", respuesta: "Entre dos y cuatro semanas, según la zona y el tamaño. La primera semana pica y se pela un poco: es normal." }
+      - { pregunta: "¿Qué hago los primeros días?", respuesta: "Lávalo con jabón neutro dos o tres veces al día, sécalo a toquecitos y pon una capa fina de crema. Ni sol, ni piscina, ni mar durante tres semanas." }
+      - { pregunta: "¿Duele mucho?", respuesta: "Depende de la zona: costillas, pies y codos molestan más; brazo y gemelo, bastante menos. Paramos cuando lo necesites." }
+      - { pregunta: "¿Hay que dejar señal para reservar?", respuesta: "Para tatuajes sí, y se descuenta del precio final. Barbería y piercing no llevan señal." }
+      - { pregunta: "¿Tatuáis a menores?", respuesta: "No tatuamos a menores de 18 años. El piercing de oreja, a partir de 16 y con la madre, el padre o el tutor presentes." }
+      - { pregunta: "¿Puedo ir a la barbería sin cita?", respuesta: "Si hay hueco, sí. Para ir a tiro hecho, pide cita por WhatsApp: los sábados se llenan pronto." }
+
+  cita:
+    activa: true
+    antetitulo: Pide cita
+    titulo: Cuéntanos tu idea
+    texto: "Te respondemos en dos días laborables con presupuesto y fecha. Para barbería, mejor por WhatsApp: es más rápido."
+    nota: "Sin compromiso. La señal solo se pide al confirmar la fecha."
+    boton_formulario: Enviar mi idea
+    opciones: "Brazo; Antebrazo; Mano; Hombro; Espalda; Pecho; Costillas; Pierna; Gemelo; Tobillo; Cuello; Oreja; Otra zona"
+    items:
+      - { titulo: La idea, texto: "Una frase y, si tienes, alguna foto de referencia." }
+      - { titulo: La zona, texto: "Dónde lo quieres y si ya tienes otros tatuajes cerca." }
+      - { titulo: El tamaño, texto: "Aproximado, en centímetros. Te ayudamos a decidirlo." }
+
+  contacto:
+    activa: true
+    antetitulo: Contacto
+    titulo: Ven a conocer el estudio
+    texto: "En pleno Casco Vello, a dos calles del puerto. Pásate a ver el estudio y a hablar de tu idea sin compromiso."
+    boton_formulario: Enviar mensaje
+    horario:
+      - { dia: Martes a viernes, horas: "10:00 a 14:00 y 16:00 a 20:30" }
+      - { dia: Sábado, horas: "10:00 a 15:00" }
+      - { dia: Domingo y lunes, horas: Cerrado }

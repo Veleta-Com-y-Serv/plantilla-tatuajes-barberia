@@ -1,0 +1,44 @@
+---
+// Cómo trabajamos: banda roja de borde a borde con grano y borde dentado. Los pasos `items: [{titulo, texto, icono}]`
+// van en columnas (hasta 4 en escritorio, 2 en tableta, 1 en móvil), cada uno con su número enorme en slab serif,
+// filete discontinuo de plantilla arriba e icono. Sin pasos, solo el titular.
+import { seccion } from '../../data/site';
+import Seccion from '../ui/Seccion.astro';
+import Titular from '../ui/Titular.astro';
+import Icono from '../ui/Icono.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+const pasos = s ? s.items.filter((it) => it && it.titulo) : [];
+const columnas = Math.min(Math.max(pasos.length, 1), 4);
+---
+
+{
+  s && (
+    <Seccion id={Astro.props.id} class="banda-roja grano dentado">
+      <Titular antetitulo={s.antetitulo} titulo={s.titulo} texto={s.texto} />
+      {pasos.length > 0 && (
+        <ol class="pasos" style={`--cols:${columnas};--cols-md:${Math.min(columnas, 2)}`}>
+          {pasos.map((it, i) => (
+            <li class="paso">
+              <div class="flex items-start justify-between gap-4">
+                <span class="paso-numero" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                {it.icono && <Icono nombre={it.icono} tam={34} class="mt-2 shrink-0 opacity-90" />}
+              </div>
+              <h3 class="paso-titulo">{it.titulo}</h3>
+              {it.texto && <p class="mt-2 opacity-90">{it.texto}</p>}
+            </li>
+          ))}
+        </ol>
+      )}
+    </Seccion>
+  )
+}
+
+<style>
+  .pasos { display: grid; gap: 2.5rem; counter-reset: paso; }
+  @media (min-width: 640px) { .pasos { grid-template-columns: repeat(var(--cols-md), minmax(0, 1fr)); gap: 3rem 2rem; } }
+  @media (min-width: 1024px) { .pasos { grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: 2.5rem; } }
+  .paso { padding-top: 1.25rem; border-top: 3px dashed color-mix(in srgb, currentColor 60%, transparent); }
+  .paso-numero { font-family: var(--fuente-titulos); font-weight: 800; font-synthesis-weight: none; font-size: clamp(4rem, 9vw, 6.5rem); line-height: .85; letter-spacing: -0.04em; color: color-mix(in srgb, currentColor 30%, transparent); }
+  .paso-titulo { margin-top: 1rem; font-size: clamp(1.6rem, 3vw, 2.1rem); }
+</style>

@@ -1,0 +1,54 @@
+---
+// Apartado de texto genérico (apartados nuevos del cliente: `tipo: texto`). Banda hueso con grano de borde a borde:
+// antetítulo, título, párrafos (`texto`, separados por línea en blanco), `items: [{titulo, texto, icono}]` y `cta`.
+// Con `imagen`, fila 50/50 con la foto a sangre hasta el borde derecho de la ventana.
+import { seccion, parrafos } from '../../data/site';
+import { altSeccion } from '../../lib/seo';
+import Imagen from '../ui/Imagen.astro';
+import Icono from '../ui/Icono.astro';
+interface Props { id: string }
+const s = seccion(Astro.props.id);
+---
+
+{
+  s && (
+    <section id={Astro.props.id} class:list={['apartado banda-hueso grano dentado', { 'apartado--foto': !!s.imagen }]}>
+      <div class="apartado-cuerpo">
+        {s.antetitulo && <p class="antetitulo">{s.antetitulo}</p>}
+        {s.titulo && <h2 class="titulo-seccion">{s.titulo}</h2>}
+        {parrafos(s.texto).length > 0 && <div class="mt-6 max-w-3xl space-y-4 text-lg opacity-85">{parrafos(s.texto).map((p) => <p>{p}</p>)}</div>}
+        {s.items.length > 0 && (
+          <ul class="mt-9 grid gap-5 sm:grid-cols-2">
+            {s.items.map((it) => (
+              <li class="flex gap-4 border-t-2 border-current pt-4">
+                <Icono nombre={it.icono} class="resalte mt-1 shrink-0" tam={24} />
+                <div>
+                  <p class="font-display text-xl font-extrabold [font-synthesis-weight:none]">{it.titulo}</p>
+                  {it.texto && <p class="mt-1 text-[.95rem] opacity-80">{it.texto}</p>}
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+        {s.cta?.url && <p class="mt-10"><a class="btn" href={s.cta.url}>{s.cta.texto}</a></p>}
+      </div>
+      {s.imagen && (
+        <div class="apartado-foto">
+          <Imagen src={s.imagen} alt={altSeccion(s)} ancho={1200} alto={900} class="h-full w-full object-cover" />
+        </div>
+      )}
+    </section>
+  )
+}
+
+<style>
+  .apartado { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .apartado-cuerpo { width: 100%; max-width: var(--ancho); margin-inline: auto; padding: var(--ritmo) 1rem; }
+  .apartado-foto { order: -1; height: 62vw; max-height: 30rem; overflow: hidden; }
+  @media (min-width: 768px) { .apartado-cuerpo { padding: var(--ritmo-md) 2rem; } }
+  @media (min-width: 1024px) {
+    .apartado--foto { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .apartado--foto .apartado-cuerpo { max-width: none; margin: 0; padding-left: max(2rem, calc((100vw - var(--ancho)) / 2 + 2rem)); padding-right: 4rem; }
+    .apartado-foto { order: 0; height: auto; max-height: none; min-height: 28rem; }
+  }
+</style>

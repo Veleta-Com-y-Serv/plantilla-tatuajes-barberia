@@ -58,13 +58,98 @@ secciones:
     nota: "Precios con IVA incluido. Para reservar fecha de tatuaje pedimos una señal que se descuenta del total."
     cta: { texto: Pide presupuesto, url: "/#cita" }
     servicios:
-      - { nombre: Tatuaje pequeño, texto: "Hasta 5 cm: letras, símbolos o línea fina.", precio: "desde 60 €", duracion: 1 h, categoria: Tatuaje, destacado: false }
-      - { nombre: Tatuaje mediano, texto: "Antebrazo, gemelo u hombro, con diseño propio incluido.", precio: "desde 150 €", duracion: 2-3 h, categoria: Tatuaje, destacado: false }
-      - { nombre: Sesión de día completo, texto: "Para piezas grandes por sesiones: manga, espalda o pierna.", precio: "450 €", duracion: 6 h, categoria: Tatuaje, destacado: true }
-      - { nombre: Cover up, texto: "Tapamos o renovamos un tatuaje antiguo. Antes lo vemos en persona.", precio: "desde 120 €", duracion: "", categoria: Tatuaje, destacado: false }
+      - nombre: Tatuaje pequeño
+        texto: "Hasta 5 cm: letras, símbolos o línea fina."
+        precio: "desde 60 €"
+        duracion: 1 h
+        categoria: Tatuaje
+        destacado: false
+        imagenes: "/fotos/trabajo-flash.jpg; /fotos/trabajo-antebrazo.jpg"
+        detalle: |
+          Es la forma más tranquila de estrenarse en la piel y también la favorita de quien ya tiene varios y quiere un detalle más. Letras, fechas, símbolos, una flor mínima o una línea fina que acompaña a una pieza mayor: todo lo que cabe en la palma de la mano entra en este servicio.
+
+          Empezamos hablando de la idea y de la zona. Antía o Xoán dibujan el motivo a mano, lo pasamos a papel de calco y lo colocamos sobre la piel para ver cómo respeta la anatomía. Si algo no te convence, se corrige en ese momento, antes de que suene la máquina.
+
+          Trabajamos con aguja y material de un solo uso, en cabina cerrada y con las pausas que pidas. Al terminar te explicamos cómo curarlo y te llevas las instrucciones por escrito. El retoque del primer mes va de nuestra cuenta.
+
+          Para reservar pedimos una señal que luego se descuenta del precio final. Si dudas entre dos tamaños, cuéntanoslo por WhatsApp y te orientamos con una foto de la zona.
+      - nombre: Tatuaje mediano
+        texto: "Antebrazo, gemelo u hombro, con diseño propio incluido."
+        precio: "desde 150 €"
+        duracion: 2-3 h
+        categoria: Tatuaje
+        destacado: false
+        imagenes: "/fotos/trabajo-maquina.jpg; /fotos/trabajo-tintas.jpg"
+        detalle: |
+          Aquí hay espacio para que el dibujo respire: un animal, un retrato en línea, un motivo marinero o una composición botánica sobre antebrazo, gemelo u hombro. Es el tamaño en el que más se nota que la pieza está pensada para una sola piel.
+
+          El diseño propio va incluido en el precio. Nos cuentas qué quieres, traes las referencias que te gusten y el equipo prepara una propuesta que se ajusta en el estudio, con la plantilla puesta sobre la zona. No dibujamos de memoria ni repetimos catálogos: cada pieza se adapta a tu músculo, tu postura y tu manera de moverte.
+
+          La sesión se hace del tirón o en dos veces si el diseño lleva mucho sombreado o color. Entre tanto, la piel cura y se ve cómo asienta la tinta, lo que ayuda a afinar los últimos detalles sin prisas.
+
+          Antes de empezar repasamos la higiene, la señal de reserva y los cuidados posteriores. Pregunta lo que quieras: preferimos que llegues tranquilo a que te quedes con dudas en la silla.
+      - nombre: Sesión de día completo
+        texto: "Para piezas grandes por sesiones: manga, espalda o pierna."
+        precio: "450 €"
+        duracion: 6 h
+        categoria: Tatuaje
+        destacado: true
+        imagenes: "/fotos/trabajo-estudio.jpg; /fotos/trabajo-flash.jpg"
+        detalle: |
+          Para las piezas que se piensan en grande: un manga completo, una espalda o una pierna. Se trabaja por sesiones de jornada entera, con tiempo para avanzar de verdad en el dibujo y para que la composición tenga unidad de principio a fin.
+
+          Antes de la primera sesión nos sentamos contigo a planificar el conjunto. Se decide el estilo, cómo fluye el motivo por el cuerpo y en qué orden se hará cada zona. Así cada jornada suma a la anterior y la pieza final se lee como un solo dibujo, no como parches.
+
+          El día de la sesión conviene llegar descansado, comido y con ropa que deje la zona a la vista. Hacemos pausas para estirar, beber agua y comer algo; la tinta se asienta mejor cuando el cuerpo está cómodo.
+
+          Entre sesión y sesión dejamos que la piel cure del todo. Revisamos juntos cómo ha quedado la parte anterior y, si hace falta, se retoca antes de seguir. La señal de la reserva se descuenta del total.
+      - nombre: Cover up
+        texto: "Tapamos o renovamos un tatuaje antiguo. Antes lo vemos en persona."
+        precio: "desde 120 €"
+        duracion: ""
+        categoria: Tatuaje
+        destacado: false
+        imagenes: "/fotos/trabajo-tintas.jpg"
+        detalle: |
+          Un tatuaje que ya no te representa, que se ha emborronado con los años o que hizo alguien con prisas tiene arreglo. El cover up consiste en diseñar un dibujo nuevo que absorba el anterior, o en renovar el existente cuando solo necesita fuerza y definición.
+
+          Por eso pedimos verlo siempre en persona. Necesitamos mirar el tamaño, la intensidad de la tinta, el estado de la cicatriz y el tono de la piel. Con eso se decide qué se puede conseguir y si conviene aclarar antes con una sesión previa. Te lo explicamos con claridad, sin prometer más de lo que la piel permite.
+
+          Los diseños para tapar suelen ser algo más cargados y oscuros que el original, así que el estilo se elige con cabeza: blackwork, tradicional con color sólido o composiciones botánicas con mucho follaje funcionan especialmente bien.
+
+          Trae una foto del tatuaje y escríbenos para concertar una visita de valoración. Sin compromiso: si no se puede tapar bien, te lo decimos.
       - { nombre: Retoque, texto: "Gratis el primer mes en los trabajos del estudio.", precio: "Consultar", duracion: 30 min, categoria: Tatuaje, destacado: false }
       - { nombre: Corte de pelo, texto: "Tijera o máquina, lavado y peinado.", precio: "16 €", duracion: 30 min, categoria: Barbería, destacado: false }
-      - { nombre: Degradado, texto: "Skin fade o low fade con el acabado a navaja.", precio: "18 €", duracion: 40 min, categoria: Barbería, destacado: true }
+      - nombre: Degradado
+        texto: "Skin fade o low fade con el acabado a navaja."
+        precio: "18 €"
+        duracion: 40 min
+        categoria: Barbería
+        destacado: true
+        imagenes: "/fotos/trabajo-degradado.jpg; /fotos/barberia.jpg"
+        detalle: |
+          El degradado es el corte más pedido de la barbería y el que más se nota cuando está bien hecho. Se trabaja con máquina y peine para que el pelo pase del más corto al más largo sin saltos, y se remata con la navaja en el contorno para dejar la línea limpia.
+
+          Antes de empezar, Breixo te pregunta cómo lo llevas, qué altura buscas y cómo lo peinas a diario. Un skin fade deja la piel casi a la vista y da un aire muy limpio; un low fade es más discreto y envejece mejor entre cortes. Si dudas, te enseña con el espejo cómo quedaría cada uno.
+
+          El servicio incluye lavado y peinado con el producto que mejor le vaya a tu tipo de pelo. Al terminar te contamos cómo mantenerlo en casa y cada cuánto conviene pasar a repasarlo para que no pierda forma.
+
+          Para ir a tiro hecho, pide cita por WhatsApp: los sábados se llenan pronto.
+      - nombre: Afeitado clásico
+        texto: "Toalla caliente, brocha y navaja, sin prisas."
+        precio: "20 €"
+        duracion: 40 min
+        categoria: Barbería
+        destacado: false
+        imagenes: "/fotos/trabajo-navaja.jpg; /fotos/barberia.jpg"
+        detalle: |
+          El afeitado de siempre, hecho con calma. Es el servicio para quien quiere sentarse un rato, desconectar y salir con la cara como nueva. Se hace con navaja de verdad, brocha, espuma caliente y toalla humeante, como en las barberías de antes.
+
+          Empezamos con una toalla caliente que abre el poro y ablanda la barba. Después se aplica la espuma con brocha, en movimientos suaves, y se afeita a favor y, si la piel lo admite, contra el sentido del pelo. Cada pasada se hace sin presión y con la piel bien tensa para evitar irritaciones.
+
+          Al terminar, una toalla fría cierra el poro y se aplica un bálsamo o un aceite que calma la piel. Si tienes tendencia a los granitos o a los pelos enquistados, avísanos y adaptamos el producto y la técnica.
+
+          Es un servicio para tomárselo con tiempo, así que mejor con cita previa. Pídela por WhatsApp o en el formulario y elige el día que te venga bien.
       - { nombre: Arreglo de barba, texto: "Perfilado a navaja, toalla caliente y aceite.", precio: "12 €", duracion: 20 min, categoria: Barbería, destacado: false }
       - { nombre: Afeitado clásico, texto: "Toalla caliente, brocha y navaja, sin prisas.", precio: "20 €", duracion: 40 min, categoria: Barbería, destacado: false }
       - { nombre: Corte y barba, texto: "El combo de los sábados por la mañana.", precio: "26 €", duracion: 1 h, categoria: Barbería, destacado: false }

@@ -3,9 +3,12 @@
 // arriba una franja de foto a sangre (`imagen`, opcional), luego titular y texto en dos columnas y la lista
 // `servicios: [{nombre, texto, precio, duracion, categoria, destacado}]` agrupada por `categoria` (una columna
 // por grupo en escritorio, hasta tres). Cada fila: nombre, puntos guía y precio; debajo, texto y duración.
+// Los servicios con `detalle` tienen página propia (/servicios/<slug>/): el nombre es un enlace con «Ver más».
 // `destacado: true` = estrella roja. Precio vacío = no se pinta (sin puntos guía). `nota` y `cta` opcionales.
 import { seccion, porCategoria } from '../../data/site';
 import { altSeccion } from '../../lib/seo';
+import { enlaceDe } from '../../lib/paginas';
+import Icono from '../ui/Icono.astro';
 import Imagen from '../ui/Imagen.astro';
 import Titular from '../ui/Titular.astro';
 interface Props { id: string }
@@ -43,7 +46,7 @@ const columnas = Math.min(Math.max(grupos.length, 1), 3);
                       <p class="servicio-fila">
                         <span class="servicio-nombre">
                           {x.destacado === true && <span class="estrella mr-1.5" aria-hidden="true">✶</span>}
-                          {x.nombre}
+                          {enlaceDe(x) ? <a href={enlaceDe(x)} class="servicio-enlace">{x.nombre}</a> : x.nombre}
                         </span>
                         {x.precio && <span class="servicio-guia" aria-hidden="true" />}
                         {x.precio && <span class="servicio-precio">{x.precio}</span>}
@@ -54,6 +57,7 @@ const columnas = Math.min(Math.max(grupos.length, 1), 3);
                           {x.duracion && <span class="servicio-duracion">{x.duracion}</span>}
                         </p>
                       )}
+                      {enlaceDe(x) && <span class="servicio-ver" aria-hidden="true">Ver más <Icono nombre="flecha" tam={14} /></span>}
                     </li>
                   ))}
                 </ul>
@@ -79,6 +83,13 @@ const columnas = Math.min(Math.max(grupos.length, 1), 3);
   @media (min-width: 900px) { .servicios-grupos { grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: 3.5rem; } }
   .servicios-categoria { display: flex; flex-direction: column; gap: .5rem; padding-bottom: 1rem; margin-bottom: .5rem; border-bottom: 3px double currentColor; font-size: clamp(2rem, 4vw, 2.75rem); }
   .servicio { padding-block: 1rem; border-bottom: 1px dashed color-mix(in srgb, currentColor 35%, transparent); }
+  .servicio { position: relative; }
+  .servicio-enlace { color: inherit; text-decoration: none; }
+  .servicio-enlace::after { content: ""; position: absolute; inset: 0; }
+  .servicio-enlace:focus-visible { outline: none; }
+  .servicio:has(.servicio-enlace:focus-visible) { outline: 2px solid var(--resalte); outline-offset: 2px; }
+  .servicio:has(.servicio-enlace):hover .servicio-nombre { color: var(--resalte); }
+  .servicio-ver { display: inline-flex; align-items: center; gap: .3rem; margin-top: .4rem; font-size: .7rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--resalte); }
   .servicio-fila { display: flex; align-items: baseline; gap: .6rem; }
   .servicio-nombre { font-family: var(--fuente-titulos); font-weight: 800; font-synthesis-weight: none; font-size: 1.25rem; line-height: 1.15; }
   .servicio-guia { flex: 1 1 1.5rem; min-width: 1.5rem; border-bottom: 2px dotted color-mix(in srgb, currentColor 45%, transparent); transform: translateY(-.3rem); }

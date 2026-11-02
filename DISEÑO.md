@@ -66,3 +66,9 @@ tras la sesión. Sin texto legible, sin logotipos, sin caras.
 - Volver a la caja centrada estrecha con tarjetas, al neón y las franjas del gimnasio o a la letra condensada.
 - Fotos de caras o de tatuajes con letras legibles.
 - Precios o cifras fijos en los componentes: todo sale de `site.yaml`.
+
+## Páginas propias (fichas)
+Diseño «rótulo de barbería»: banda negra con grano y migas con estrellas, hero partido con la foto en blanco y negro y sombra roja (sin foto, icono grande en un sello de doble filete); banda hueso dentada con el detalle y la lista de datos con filetes; caja negra de cita; banda roja dentada con otros servicios en tarjetas de doble filete.
+Con la misma piel que la portada: cabecera y pie de la plantilla, migas (Inicio › Sección › Elemento), hero con la foto del
+elemento (sin foto, su icono), `detalle` en párrafos, tabla de datos, caja de contacto, galería (`imagenes`) y otros elementos
+de la misma lista.

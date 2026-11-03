@@ -6,6 +6,7 @@ Web cruda en negro, rojo oscuro y hueso para estudios de tatuaje, barberías y p
 - Secciones: hero, servicios, artistas, proceso, galeria, manifiesto, preguntas, cita, contacto (+ `texto` para apartados nuevos).
 - Campos propios: `servicios[]` (nombre, texto, precio, duracion, categoria, destacado), `personas[].estilos` (cadena con comas), `manifiesto.declaracion` y `manifiesto.autor`, `cita.opciones` (zonas del cuerpo con «;»), `boton_formulario` en cita y contacto, `contacto.horario[]` (dia, horas).
 - SEO de base incluido (`src/lib/seo.ts`): canónica, og:image, JSON-LD del negocio (`TattooParlor`) y de las preguntas frecuentes, `robots.txt`, `sitemap.xml` y `llms.txt`; `noindex` si `seo.indexable: false`.
+- Varias páginas (opcional, `paginas:` en la raíz de `site.yaml`): Inicio + una página por entrada (`{ ruta, titulo, secciones: "a; b" }`, hasta 6) con el menú hecho solo; reparto recomendado en `template.yaml → paginas`. Sin la clave, una sola página larga.
 - Contenido editable en `site.yaml`; metadatos y guion del asistente en `template.yaml`; reglas para el agente en `CLAUDE.md`; brief de diseño en `DISEÑO.md`; fotos a generar en `fotos.json` (respaldos en `public/placeholders/`).
 
 ```
